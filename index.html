@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Love</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #ffe6f2;
+            padding: 50px;
+            position: relative;
+            overflow: hidden;
+            height: 100vh;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 10;
+        }
+        h1 {
+            color: #ff4081;
+        }
+        button {
+            background-color: #ff4081;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        button:hover {
+            background-color: #e6005c;
+        }
+        #message {
+            font-size: 24px;
+            color: #ff4081;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+        .heart {
+            position: absolute;
+            color: red;
+            font-size: 50px;
+            animation: floatUp 4s linear forwards;
+            opacity: 1;
+        }
+        @keyframes floatUp {
+            0% {
+                transform: translateY(100vh) scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-10vh) scale(1.5);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>My Love</h1>
+        <p>You make my world brighter, and my heart happier. You are my everything!</p>
+        <button onclick="showMessage()">Click Me</button>
+        <p id="message"></p>
+    </div>
+
+    <script>
+        function showMessage() {
+            document.getElementById("message").textContent = "I love you!";
+            createHearts();
+        }
+
+        function createHearts() {
+            for (let i = 0; i < 15; i++) {
+                let heart = document.createElement("div");
+                heart.innerHTML = "❤️";
+                heart.classList.add("heart");
+                document.body.appendChild(heart);
+                
+                let x = Math.random() * window.innerWidth;
+                let y = window.innerHeight;
+                heart.style.left = `${x}px`;
+                heart.style.top = `${y}px`;
+                heart.style.fontSize = `${Math.random() * 50 + 50}px`;
+                
+                setTimeout(() => {
+                    heart.remove();
+                }, 4000);
+            }
+        }
+    </script>
+</body>
+</html>
